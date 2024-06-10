@@ -148,3 +148,77 @@ Further, a similar analysis was conducted to assess the dependency of missingnes
 
 GRAPH
 
+
+## Hypothesis Testing
+
+In this hypothesis testing step, we aimed to determine if there is a significant difference in the mean user ratings between recipes with calorie counts less than 400 and those with calorie counts greater than or equal to 400.
+
+### Null Hypothesis (H0):
+There is no significant difference in the mean user ratings between recipes with calorie counts less than 400 and recipes with calorie counts greater than or equal to 400.
+
+### Alternative Hypothesis (H1):
+Recipes with calorie counts greater than or equal to 400 have significantly different mean user ratings compared to recipes with calorie counts less than 400.
+
+### Test Statistic:
+We used the difference in mean user ratings between the two groups as the test statistic.
+
+### Significance Level:
+The significance level was set at 0.05.
+
+We conducted a permutation test by randomly shuffling the ratings between the two groups and calculating the test statistic for each permutation. The observed test statistic, which was the difference in mean ratings between high-calorie and low-calorie recipes, was compared to the distribution of test statistics obtained from permutations.
+
+### Results:
+The observed test statistic was approximately -0.0056, and the resulting p-value was 0.0. With a p-value less than the significance level, we rejected the null hypothesis. Therefore, we concluded that there is a significant difference in the mean user ratings between recipes with different calorie counts, indicating that calorie count might influence user ratings.
+
+
+## Framing a Prediction Model
+
+This prediction problem is relevant and valuable as it could assist individuals in planning their cooking schedules more effectively. Predicting the preparation time of a recipe can help users allocate their time efficiently, especially when planning meals for specific occasions or when considering their daily schedules.
+
+By building a predictive model to estimate the preparation time based on various features such as ingredients, cooking methods, and recipe complexity, we can provide users with insights into how long they might need to spend in the kitchen for a particular dish. This prediction problem aligns well with the theme of exploring culinary creations and can contribute to enhancing the overall cooking experience for individuals.
+
+Here is an outline of the steps we plan on taking:
+
+1. Data Cleaning: Handle missing values and remove duplicates.
+
+2.. Feature Engineering: Create numerical representations of text-based features and generate additional relevant features.
+
+3. Model Selection: Choose regression algorithms suitable for continuous variables.
+
+4. Model Training: Split the data, train the model, and optimize hyperparameters.
+
+5. Model Evaluation: Assess model performance using metrics like MAE, MSE, or RMSE.
+
+6. Fine-Tuning: Fine-tune hyperparameters and validate the model's robustness.
+
+7. Deployment and Monitoring: Deploy the model into production and monitor its performance.
+
+## Baseline Model
+
+For the baseline model, we used a simple linear regression model, which was trained on two features: `calorie_count` and `n_steps`. These features were selected based on their potential correlation with the target variable, as both the calorie count and the number of steps in a recipe might influence the time required for preparation.
+
+After fitting the model to the training data, we evaluated its performance on the test data using the mean squared error (MSE) as the performance metric. The MSE quantifies the average squared difference between the predicted and actual values of the target variable.
+
+The baseline model serves as a starting point for our predictive task. Further iterations and improvements on the model can be made by incorporating additional features, experimenting with different algorithms, and tuning hyperparameters. Additionally, exploring more sophisticated techniques such as feature engineering and ensemble methods could potentially enhance the predictive performance of the model.
+
+## Final Model
+
+In the final model iteration, We aimed to enhance the predictive performance of the model by incorporating additional features and tuning hyperparameters. Despite the model not demonstrating significant improvement in performance metrics compared to the baseline, the process involved several important steps:
+
+Feature Engineering: We engineered two new features from the dataset, leveraging insights from the data to create potentially more informative predictors.
+
+Hyperparameter Tuning: We performed hyperparameter tuning on the training dataset using techniques like GridSearchCV to search for the optimal combination of hyperparameters for the chosen model. This step aimed to fine-tune the model's parameters to improve its predictive capability.
+
+Model Training: The final model was trained on the training dataset, utilizing the entire dataset after the hyperparameter tuning process.
+
+Evaluation: The performance of the final model was evaluated on the test dataset to obtain performance metrics. Although the model did not exhibit a significant improvement in performance compared to the baseline, the evaluation provided valuable insights into the model's predictive ability.
+
+Despite the model not showing a marked improvement in performance metrics, the iterative process of feature engineering, hyperparameter tuning, and model evaluation contributed to a deeper understanding of the data and the modeling process. These efforts underscore the importance of experimentation and refinement in the pursuit of building robust predictive models.
+
+## Fairness Analysis
+
+For the fairness analysis, we divided the dataset into two groups based on the calorie count of recipes. The first group consists of recipes with calorie counts less than 400, while the second group includes recipes with calorie counts greater than or equal to 400. We then performed a permutation test to assess whether the model's performance, measured by RMSE (Root Mean Squared Error), differs significantly between these two groups.
+
+The null hypothesis posits that the model is fair, meaning its predictive performance for recipes with lower calorie counts is similar to that for recipes with higher calorie counts, and any observed differences are due to random chance. Conversely, the alternative hypothesis suggests that the model is unfair, indicating that its performance is worse for recipes with lower calorie counts compared to those with higher calorie counts.
+
+By conducting the permutation test and computing the p-value, we can evaluate the likelihood of observing the observed difference in RMSE between the two groups under the null hypothesis. A low p-value would indicate that the model's performance significantly differs between the two groups, suggesting potential fairness issues. Conversely, a high p-value would suggest that any observed differences are likely due to random chance, supporting the fairness of the model.
