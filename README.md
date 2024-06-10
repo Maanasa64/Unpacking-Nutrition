@@ -28,7 +28,7 @@ This inquiry delves into the intersection of taste preferences, nutritional valu
 
 We use 2 datasets in our investigation:
 
-1. `recipe` has `83782 rows × 12 columns`:
+`recipe` has `83782 rows × 12 columns`:
 
 | Column             | Description                                                                                                                                                                                       |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -45,7 +45,7 @@ We use 2 datasets in our investigation:
 | `'ingredients'`    | Text for recipe ingredients                                                                                                                                                                       |
 | `'n_ingredients'`  | Number of ingredients in recipe                                                                                                                                                                   |
 
-2. `interaction` has `731927 rows × 5 columns`
+`interaction` has `731927 rows × 5 columns`
 
 | Column        | Description         |
 | :------------ | :------------------ |
@@ -111,5 +111,32 @@ In our univariate analysis, we examined the distribution of user ratings and cat
   height="600"
   frameborder="0"
 ></iframe>
+
+#### Distribution of Average Ratings:
+
+The histogram visualizes the distribution of mean user ratings for the food recipes in the dataset. Each bar represents a rating value, ranging from 0 to 5, with the height of the bar indicating the frequency of recipes receiving that particular rating. This plot helps us understand the distribution of user preferences and provides insights into the overall satisfaction level of users with the recipes.
+
+#### Distribution of Low Calorie Recipes:
+
+The histogram visualizes the distribution of recipes with less than 400 calories. Each bar represents whether the recipe is low calorie (1) or not (0). The height of the bar indicates the frequency of recipes in each category. This plot helps us understand the prevalence of low-calorie recipes in the dataset.
+
+#### Distribution of High Calorie Recipes:
+
+Similarly, the histogram for high-calorie recipes visualizes the distribution of recipes with 400 or more calories. Each bar represents whether the recipe is high calorie (1) or not (0). The height of the bar indicates the frequency of recipes in each category. This plot helps us understand the prevalence of high-calorie recipes in the dataset.
+
+
+### Bivariate Analysis
+
+In our exploration of bivariate analysis, we delve into the interconnected relationships between different attributes of recipes and their nutritional content. Through scatter plots, we aim to uncover potential associations between variables such as user ratings, recipe complexity, and calorie counts. 
+
+#### Scatter Plot: Average Rating vs. Calorie Count:
+
+This scatter plot visualizes the relationship between the average rating of recipes and their calorie count. Each point on the plot represents a single recipe, with the x-axis indicating the average rating it received from users, and the y-axis representing its calorie count. We can see that as the ratings increase, the scatter plots get higher indicating that there might be a correlation between the two.
+
+#### Scatter Plot: Number of Steps vs. Calorie Count:
+
+This scatter plot shows the relationship between the number of steps in a recipe and its calorie count. Each point represents a recipe, with the number of steps on the x-axis and the calorie count on the y-axis. This visualization helps us identify any trends or correlations between these two variables. In the plot, we cannot see any obvious relationship between the two and any relation might be due to chance.
+
+By analyzing these plots, we can gain insights into potential associations between these variables, which can guide us in formulating interesting hypothesis tests.
 
 
