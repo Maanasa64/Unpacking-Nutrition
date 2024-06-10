@@ -29,7 +29,6 @@ This inquiry delves into the intersection of taste preferences, nutritional valu
 We use 2 datasets in our investigation:
 
 1. `recipe` has `83782 rows × 12 columns`:
-The first dataset, `recipe`, contains 83782 rows, indicating 83782 unique recipes, with 10 columns recording the following information:
 
 | Column             | Description                                                                                                                                                                                       |
 | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -55,4 +54,10 @@ The first dataset, `recipe`, contains 83782 rows, indicating 83782 unique recipe
 | `'date'`      | Date of interaction |
 | `'rating'`    | Rating given        |
 | `'review'`    | Review text         |
+
+Examining the relationship between calorie counts and user ratings is not only pertinent to understanding taste preferences and nutritional values but also holds significant implications for health and well-being. In today's society, where concerns about obesity, diabetes, and other diet-related health issues are prevalent, understanding how nutritional content influences user satisfaction becomes crucial.
+
+Calorie count is a fundamental aspect of nutritional information, directly tied to energy intake and expenditure. Foods with higher calorie counts often contain higher levels of fat, sugar, and carbohydrates, which, if consumed excessively, can contribute to weight gain and other health problems. On the other hand, foods with lower calorie counts may be perceived as healthier options, promoting satiety without excessive energy intake.
+
+User ratings provide valuable insights into consumer preferences and perceptions of food products. By analyzing how user ratings correlate with calorie counts, we can gain a deeper understanding of how individuals perceive the relationship between taste, satisfaction, and nutritional content. This understanding can inform dietary recommendations, food labeling policies, and interventions aimed at promoting healthier eating habits.
 
