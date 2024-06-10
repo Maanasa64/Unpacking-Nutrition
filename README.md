@@ -68,14 +68,25 @@ User ratings provide valuable insights into consumer preferences and perceptions
 
 To clean the data appropriately, we will perform the following steps:
 
-1. Replace missing or inappropriate values with NaN where necessary.
-   This step ensures that our data is consistent and suitable for analysis. In the provided code, missing ratings (denoted as 0) are replaced with NaN using the replace() function from the NumPy library (np.nan). This ensures that any missing or inappropriate values in the 'rating' column are appropriately handled and do not affect subsequent analyses.
+1. Merging Datasets: Two datasets, `recipes.csv` and `interactions.csv`, were merged using the `id` column as the key.
 
-2. Convert relevant columns to appropriate data types.
-   It's essential to use the correct data types for each column to perform meaningful analyses. In the provided code, columns containing date information (`submitted` and `date`) are converted to datetime objects using the `pd.to_datetime()` function. This conversion allows us to perform date-based operations and analyses accurately.
+2. Replacing Zero Ratings: Zero values in the `rating` column were replaced with NaN (Not a Number) to ensure accurate calculations and analysis.
 
-3. Extract useful information from columns such as dates or text.
-   Sometimes, valuable insights can be derived by extracting useful information from existing columns. In the provided code, the `submitted` and `date` columns are split into separate columns for year, month, and day using datetime properties (`dt.year`, `dt.month`, `dt.day`). This allows us to analyze trends over time more effectively and explore variations in interactions and submissions across different time periods.
+3. Converting Date Columns: The 'submitted' and `date` columns were converted to datetime format to enable easier manipulation and analysis of dates.
+
+4. Extracting Date Components: Additional columns were created to extract the year, month, and day from both the `submitted` and `date` columns. This allows for temporal analysis based on the submission date and interaction date.
+
+5. Calculating Average Rating per Recipe: The average rating per recipe was calculated by grouping the data by recipe ID and computing the mean of the ratings.
+
+6. Cleaning Nutrition Column: The `nutrition` column was cleaned by removing brackets and extra spaces.
+
+7. Extracting Calorie Count: From the cleaned `nutrition` column, the calorie count was extracted and converted to a numerical format.
+
+8. Adding Categorical Columns: Two new columns, `low_calories` and `high_calories`, were added to categorize recipes based on their calorie count. Recipes with calorie counts less than 400 were labeled as `low_calories`, while those with counts greater than or equal to 400 were labeled as `high_calories`.
+
+Dropping Unnecessary Columns: Columns such as `submitted`, `date`, `nutrition`, and `rating` (after calculating average rating) were dropped as they were either redundant or no longer needed for the analysis.
+
+
 
 Our final cleaned df looks like this:
 
