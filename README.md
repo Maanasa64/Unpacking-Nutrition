@@ -10,11 +10,11 @@ Our dataset provides a comprehensive view of food products, including details su
 
 ### Questions of Interest:
 
-Do dishes with higher calorie counts tend to receive higher ratings from users?
+1. Do dishes with higher calorie counts tend to receive higher ratings from users?
 
-How have the nutritional profiles of food products changed over time?
+2. How have the nutritional profiles of food products changed over time?
 
-Are there any correlations between specific ingredients and user ratings?
+3. Are there any correlations between specific ingredients and user ratings?
 
 ### Question of Focus:
 
@@ -28,7 +28,7 @@ This inquiry delves into the intersection of taste preferences, nutritional valu
 
 We use 2 datasets in our investigation:
 
-1. `recipes_df` has `83782 rows × 12 columns`:
+1. `recipe` has `83782 rows × 12 columns`:
 The first dataset, `recipe`, contains 83782 rows, indicating 83782 unique recipes, with 10 columns recording the following information:
 
 | Column             | Description                                                                                                                                                                                       |
@@ -45,4 +45,14 @@ The first dataset, `recipe`, contains 83782 rows, indicating 83782 unique recipe
 | `'description'`    | User-provided description                                                                                                                                                                         |
 | `'ingredients'`    | Text for recipe ingredients                                                                                                                                                                       |
 | `'n_ingredients'`  | Number of ingredients in recipe                                                                                                                                                                   |
+
+2. `interaction` has `731927 rows × 5 columns`
+
+| Column        | Description         |
+| :------------ | :------------------ |
+| `'user_id'`   | User ID             |
+| `'recipe_id'` | Recipe ID           |
+| `'date'`      | Date of interaction |
+| `'rating'`    | Rating given        |
+| `'review'`    | Review text         |
 
