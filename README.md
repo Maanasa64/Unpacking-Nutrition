@@ -103,14 +103,7 @@ Our final cleaned df looks like this:
 
 In our univariate analysis, we examined the distribution of user ratings and categorized recipes based on their calorie counts. The histogram titled "Distribution of User Ratings" provides an overview of the distribution of average user ratings across all recipes, ranging from 1 to 5. This visualization offers insight into the overall sentiment or satisfaction level of users with the recipes in the dataset. Additionally, we explored the prevalence of low-calorie recipes (calorie count < 400) and high-calorie recipes (calorie count ≥ 400) through histograms titled "Distribution of Low Calorie Recipes" and "Distribution of High Calorie Recipes," respectively. These visualizations help us understand the distribution and occurrence of recipes across different ratings and calorie categories, laying the foundation for further analysis into the relationships between user ratings and nutritional content.
 
-
-
-<iframe
-  src="graphs/univariate.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+GRAPH
 
 #### Distribution of Average Ratings:
 
@@ -129,6 +122,8 @@ Similarly, the histogram for high-calorie recipes visualizes the distribution of
 
 In our exploration of bivariate analysis, we delve into the interconnected relationships between different attributes of recipes and their nutritional content. Through scatter plots, we aim to uncover potential associations between variables such as user ratings, recipe complexity, and calorie counts. 
 
+GRAPH
+
 #### Scatter Plot: Average Rating vs. Calorie Count:
 
 This scatter plot visualizes the relationship between the average rating of recipes and their calorie count. Each point on the plot represents a single recipe, with the x-axis indicating the average rating it received from users, and the y-axis representing its calorie count. We can see that as the ratings increase, the scatter plots get higher indicating that there might be a correlation between the two.
@@ -139,4 +134,17 @@ This scatter plot shows the relationship between the number of steps in a recipe
 
 By analyzing these plots, we can gain insights into potential associations between these variables, which can guide us in formulating interesting hypothesis tests.
 
+### Interesting Aggregates 
+
+In our analysis of intriguing aggregates, we scrutinized the relationship between recipe calorie categories, nutritional components, and average user ratings. Splitting the nutrition column allowed us to compute mean values for various nutritional aspects across low-calorie and high-calorie recipes. Surprisingly, despite initial assumptions, both categories exhibited similar average ratings, challenging the notion that calorie content alone significantly influences user satisfaction. Visualizations reinforced this unexpected finding, suggesting a more nuanced relationship between recipe characteristics and user preferences. Further exploration aims to uncover the intricate interplay between calorie content, nutritional composition, and user ratings to better understand the factors driving recipe popularity and user satisfaction. These insights offer valuable guidance for recipe development, catering to diverse dietary needs and taste preferences while optimizing user experience.
+
+## Assessment of Missingness
+
+There seem to be a high number of missing values for average ratings. We can determine its missingness dependency on another column by seeing its distribution on conducting permutation tests.
+
+The dataset containing recipe information exhibits missing values in various columns, notably in the `average_rating` and `description` columns. To explore the dependency of missingness in the `average_rating` column on the presence or absence of values in the `description` column, a permutation test was conducted. The null hypothesis (H0) posited that the missingness of `average_rating` does not rely on the availability of data in the `description` column, while the alternative hypothesis (H1) suggested the opposite. The test statistic calculated the absolute difference in the proportion of missing `average_rating` between recipes with and without descriptions. The significance level was set at 0.05. The analysis revealed a p-value of 0.298, indicating that there's insufficient evidence to reject the null hypothesis. This suggests that missingness in `average_rating` is not contingent on the presence or absence of descriptions. This also in turn suggests that `average_rating` is NMAR or Not Missing At Random as the missing values don't depend on any other column
+
+Further, a similar analysis was conducted to assess the dependency of missingness in the `description` column on the `n_steps` column. The null hypothesis (H0) proposed that the missingness of `description` is independent of the `n_steps` column, while the alternative hypothesis (H1) suggested otherwise. The test statistic computed the absolute difference in the proportion of missing `n_steps` between recipes with and without descriptions. With a p-value of 0.004, the null hypothesis was rejected, indicating that missingness in the `description` column likely depends on the `n_ingredients` column. This insight into missingness dependencies enhances our understanding of data quality and informs subsequent data handling strategies. This means that the `description` column is MAR or Missing At Random as the missing values depend on the `n_ingredients` column.
+
+GRAPH
 
