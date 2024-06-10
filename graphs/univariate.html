@@ -1,0 +1,55 @@
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>
+        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+        <div id="plotly_histogram_average_rating" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+        <script type="text/javascript">
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            if (document.getElementById("plotly_histogram_average_rating")) {
+                Plotly.newPlot(
+                    "plotly_histogram_average_rating",
+                    [{"type": "histogram", "x": [1, 2, 3, 4, 5]}],
+                    {"title": "Distribution of User Ratings"},
+                    {"responsive": true}
+                );
+            }
+        </script>
+    </div>
+
+    <div>
+        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+        <div id="plotly_histogram_low_calories" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+        <script type="text/javascript">
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            if (document.getElementById("plotly_histogram_low_calories")) {
+                Plotly.newPlot(
+                    "plotly_histogram_low_calories",
+                    [{"type": "histogram", "x": [0, 1]}],
+                    {"title": "Distribution of Low Calorie Recipes"},
+                    {"responsive": true}
+                );
+            }
+        </script>
+    </div>
+
+    <div>
+        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+        <div id="plotly_histogram_high_calories" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+        <script type="text/javascript">
+            window.PLOTLYENV=window.PLOTLYENV || {};
+            if (document.getElementById("plotly_histogram_high_calories")) {
+                Plotly.newPlot(
+                    "plotly_histogram_high_calories",
+                    [{"type": "histogram", "x": [0, 1]}],
+                    {"title": "Distribution of High Calorie Recipes"},
+                    {"responsive": true}
+                );
+            }
+        </script>
+    </div>
+</body>
+</html>
