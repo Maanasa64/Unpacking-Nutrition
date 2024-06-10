@@ -61,3 +61,19 @@ Calorie count is a fundamental aspect of nutritional information, directly tied 
 
 User ratings provide valuable insights into consumer preferences and perceptions of food products. By analyzing how user ratings correlate with calorie counts, we can gain a deeper understanding of how individuals perceive the relationship between taste, satisfaction, and nutritional content. This understanding can inform dietary recommendations, food labeling policies, and interventions aimed at promoting healthier eating habits.
 
+
+## Data Cleaning and Exploratory Data Analysis
+
+To clean the data appropriately, we will perform the following steps:
+
+1. Replace missing or inappropriate values with NaN where necessary.
+   This step ensures that our data is consistent and suitable for analysis. In the provided code, missing ratings (denoted as 0) are replaced with NaN using the replace() function from the NumPy library (np.nan). This ensures that any missing or inappropriate values in the 'rating' column are appropriately handled and do not affect subsequent analyses.
+
+3. Convert relevant columns to appropriate data types.
+   It's essential to use the correct data types for each column to perform meaningful analyses. In the provided code, columns containing date information (`submitted` and `date`) are converted to datetime objects using the `pd.to_datetime()` function. This conversion allows us to perform date-based operations and analyses accurately.
+
+5. Extract useful information from columns such as dates or text.
+   Sometimes, valuable insights can be derived by extracting useful information from existing columns. In the provided code, the `submitted` and `date` columns are split into separate columns for year, month, and day using datetime properties (`dt.year`, `dt.month`, `dt.day`). This allows us to analyze trends over time more effectively and explore variations in interactions and submissions across different time periods.
+
+
+
