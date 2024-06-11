@@ -103,9 +103,15 @@ Our final cleaned df looks like this:
 
 In our univariate analysis, we examined the distribution of user ratings and categorized recipes based on their calorie counts. The histogram titled "Distribution of User Ratings" provides an overview of the distribution of average user ratings across all recipes, ranging from 1 to 5. This visualization offers insight into the overall sentiment or satisfaction level of users with the recipes in the dataset. Additionally, we explored the prevalence of low-calorie recipes (calorie count < 400) and high-calorie recipes (calorie count ≥ 400) through histograms titled "Distribution of Low Calorie Recipes" and "Distribution of High Calorie Recipes," respectively. These visualizations help us understand the distribution and occurrence of recipes across different ratings and calorie categories, laying the foundation for further analysis into the relationships between user ratings and nutritional content.
 
-GRAPH
 
 #### Distribution of Average Ratings:
+
+<iframe
+  src="graphs/plot1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 The histogram visualizes the distribution of mean user ratings for the food recipes in the dataset. Each bar represents a rating value, ranging from 0 to 5, with the height of the bar indicating the frequency of recipes receiving that particular rating. This plot helps us understand the distribution of user preferences and provides insights into the overall satisfaction level of users with the recipes.
 
