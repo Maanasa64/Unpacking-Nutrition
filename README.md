@@ -117,9 +117,23 @@ The histogram visualizes the distribution of mean user ratings for the food reci
 
 #### Distribution of Low Calorie Recipes:
 
+<iframe
+  src="graphs/plot3.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 The histogram visualizes the distribution of recipes with less than 400 calories. Each bar represents whether the recipe is low calorie (1) or not (0). The height of the bar indicates the frequency of recipes in each category. This plot helps us understand the prevalence of low-calorie recipes in the dataset.
 
 #### Distribution of High Calorie Recipes:
+
+<iframe
+  src="graphs/plot2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Similarly, the histogram for high-calorie recipes visualizes the distribution of recipes with 400 or more calories. Each bar represents whether the recipe is high calorie (1) or not (0). The height of the bar indicates the frequency of recipes in each category. This plot helps us understand the prevalence of high-calorie recipes in the dataset.
 
@@ -128,11 +142,23 @@ Similarly, the histogram for high-calorie recipes visualizes the distribution of
 
 In our exploration of bivariate analysis, we delve into the interconnected relationships between different attributes of recipes and their nutritional content. Through scatter plots, we aim to uncover potential associations between variables such as user ratings, recipe complexity, and calorie counts. 
 
-GRAPH
+<iframe
+  src="graphs/birating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 #### Scatter Plot: Average Rating vs. Calorie Count:
 
 This scatter plot visualizes the relationship between the average rating of recipes and their calorie count. Each point on the plot represents a single recipe, with the x-axis indicating the average rating it received from users, and the y-axis representing its calorie count. We can see that as the ratings increase, the scatter plots get higher indicating that there might be a correlation between the two.
+
+<iframe
+  src="graphs/bisteps.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 #### Scatter Plot: Number of Steps vs. Calorie Count:
 
