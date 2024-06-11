@@ -305,8 +305,34 @@ In conclusion,  The final model represents a substantial improvement over the ba
 
 ## Fairness Analysis
 
-For the fairness analysis, we divided the dataset into two groups based on the calorie count of recipes. The first group consists of recipes with calorie counts less than 400, while the second group includes recipes with calorie counts greater than or equal to 400. We then performed a permutation test to assess whether the model's performance, measured by RMSE (Root Mean Squared Error), differs significantly between these two groups.
+Groups chose:
 
-The null hypothesis posits that the model is fair, meaning its predictive performance for recipes with lower calorie counts is similar to that for recipes with higher calorie counts, and any observed differences are due to random chance. Conversely, the alternative hypothesis suggests that the model is unfair, indicating that its performance is worse for recipes with lower calorie counts compared to those with higher calorie counts.
+The two groups chosen for fairness evaluation are recipes categorized based on their calorie counts. One group comprises recipes with low calorie counts, defined as recipes with less than 400 calories, while the other group consists of recipes with high calorie counts, defined as recipes with 400 calories or more.
 
-By conducting the permutation test and computing the p-value, we can evaluate the likelihood of observing the observed difference in RMSE between the two groups under the null hypothesis. A low p-value would indicate that the model's performance significantly differs between the two groups, suggesting potential fairness issues. Conversely, a high p-value would suggest that any observed differences are likely due to random chance, supporting the fairness of the model.
+Evaluation Metric:
+
+The evaluation metric used is the Mean Squared Error (MSE), which measures the average squared difference between the predicted and actual values of preparation time for recipes in each group.
+
+Test Statistic:
+
+The test statistic used is the difference in MSE between the two groups. It quantifies the disparity in predictive performance between recipes with low and high calorie counts.
+
+Null Hypothesis:
+
+The null hypothesis states that there is no difference in predictive performance between recipes with low and high calorie counts. In other words, the difference in MSE between the two groups is due to random variation.
+
+Alternative Hypothesis:
+
+The alternative hypothesis states that there is a significant difference in predictive performance between recipes with low and high calorie counts. The difference in MSE between the two groups is not due to random variation but is instead influenced by factors related to the calorie count.
+
+Significance Level:
+
+The significance level chosen for this analysis is 0.05, indicating a 5% probability of rejecting the null hypothesis when it is true.
+
+p-value:
+
+The calculated p-value is 0.013.
+
+Interpretation of Results:
+
+With a p-value of 0.013, which is less than the significance level of 0.05, there is sufficient evidence to reject the null hypothesis. This suggests that there is a statistically significant difference in predictive performance between recipes with low and high calorie counts. The observed difference in MSE of 156,327.06 indicates that the model's predictions are significantly more accurate for one group compared to the other. Further investigation is warranted to understand the factors contributing to this disparity and to address potential fairness concerns in the model's predictions based on calorie count.
