@@ -168,7 +168,22 @@ This scatter plot shows the relationship between the number of steps in a recipe
 
 By analyzing these plots, we can gain insights into potential associations between these variables, which can guide us in formulating interesting hypothesis tests.
 
-### Interesting Aggregates 
+## Interesting Aggregates 
+
+### Low Calories Aggregate Statistics
+
+|   average_rating |   average_fat |   average_sugar |   average_sodium |   average_protein |   average_saturated_fat |   average_carbohydrates |
+|-----------------:|--------------:|----------------:|-----------------:|------------------:|------------------------:|------------------------:|
+|          4.62179 |       66.1583 |        126.938  |          48.9522 |           61.6856 |                 82.1748 |                25.7061  |
+|          4.62735 |       13.8612 |         36.0559 |          17.7443 |           17.1562 |                 16.7809 |                 7.11696 |
+
+
+### High Calories Aggregate Statistics
+
+|   average_rating |   average_fat |   average_sugar |   average_sodium |   average_protein |   average_saturated_fat |   average_carbohydrates |
+|-----------------:|--------------:|----------------:|-----------------:|------------------:|------------------------:|------------------------:|
+|          4.62735 |       13.8612 |         36.0559 |          17.7443 |           17.1562 |                 16.7809 |                 7.11696 |
+|          4.62179 |       66.1583 |        126.938  |          48.9522 |           61.6856 |                 82.1748 |                25.7061  |
 
 In our analysis of intriguing aggregates, we scrutinized the relationship between recipe calorie categories, nutritional components, and average user ratings. Splitting the nutrition column allowed us to compute mean values for various nutritional aspects across low-calorie and high-calorie recipes. Surprisingly, despite initial assumptions, both categories exhibited similar average ratings, challenging the notion that calorie content alone significantly influences user satisfaction. Visualizations reinforced this unexpected finding, suggesting a more nuanced relationship between recipe characteristics and user preferences. Further exploration aims to uncover the intricate interplay between calorie content, nutritional composition, and user ratings to better understand the factors driving recipe popularity and user satisfaction. These insights offer valuable guidance for recipe development, catering to diverse dietary needs and taste preferences while optimizing user experience.
 
@@ -176,12 +191,30 @@ In our analysis of intriguing aggregates, we scrutinized the relationship betwee
 
 There seem to be a high number of missing values for average ratings. We can determine its missingness dependency on another column by seeing its distribution on conducting permutation tests.
 
+### NMAR Analysis
+
+We have reason to believe the `average_rating` column is NMAR ,i.e. Not Missing At Random. People usually only give ratings if they feel particularly strong about a dish. If they dislike it, they give a poor rating, and if they love it, they give a good rating. If they are neutral or don't care enough, they refrain from giving ratings. Thus, since the `average_rating` column's missingness depends on the value itself, it is NMAR.
+
+### Missingness Dependency
+
 The dataset containing recipe information exhibits missing values in various columns, notably in the `average_rating` and `description` columns. To explore the dependency of missingness in the `average_rating` column on the presence or absence of values in the `description` column, a permutation test was conducted. The null hypothesis (H0) posited that the missingness of `average_rating` does not rely on the availability of data in the `description` column, while the alternative hypothesis (H1) suggested the opposite. The test statistic calculated the absolute difference in the proportion of missing `average_rating` between recipes with and without descriptions. The significance level was set at 0.05. The analysis revealed a p-value of 0.298, indicating that there's insufficient evidence to reject the null hypothesis. This suggests that missingness in `average_rating` is not contingent on the presence or absence of descriptions. This also in turn suggests that `average_rating` is NMAR or Not Missing At Random as the missing values don't depend on any other column
 
-Further, a similar analysis was conducted to assess the dependency of missingness in the `description` column on the `n_steps` column. The null hypothesis (H0) proposed that the missingness of `description` is independent of the `n_steps` column, while the alternative hypothesis (H1) suggested otherwise. The test statistic computed the absolute difference in the proportion of missing `n_steps` between recipes with and without descriptions. With a p-value of 0.004, the null hypothesis was rejected, indicating that missingness in the `description` column likely depends on the `n_ingredients` column. This insight into missingness dependencies enhances our understanding of data quality and informs subsequent data handling strategies. This means that the `description` column is MAR or Missing At Random as the missing values depend on the `n_ingredients` column.
+<iframe
+  src="graphs/missing1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
-GRAPH
 
+Further, a similar analysis was conducted to assess the dependency of missingness in the `description` column on the `n_steps` column. The null hypothesis (H0) proposed that the missingness of `description` is independent of the `n_steps` column, while the alternative hypothesis (H1) suggested otherwise. The significance level was 0.05. The test statistic computed the absolute difference in the proportion of missing `n_steps` between recipes with and without descriptions. With a p-value of 0.004, the null hypothesis was rejected, indicating that missingness in the `description` column likely depends on the `n_ingredients` column. This insight into missingness dependencies enhances our understanding of data quality and informs subsequent data handling strategies. This means that the `description` column is MAR or Missing At Random as the missing values depend on the `n_ingredients` column.
+
+<iframe
+  src="graphs/missing2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ## Hypothesis Testing
 
@@ -204,50 +237,71 @@ We conducted a permutation test by randomly shuffling the ratings between the tw
 ### Results:
 The observed test statistic was approximately -0.0056, and the resulting p-value was 0.0. With a p-value less than the significance level, we rejected the null hypothesis. Therefore, we concluded that there is a significant difference in the mean user ratings between recipes with different calorie counts, indicating that calorie count might influence user ratings.
 
+### Explanation of p-value of 0.0
+
+A p-value of 0.0 indicates that the observed test statistic is extremely unlikely to occur under the null hypothesis. In statistical terms, it means that the observed data is so extreme that it falls in the tail of the distribution under the null hypothesis. 
+
+However, it's important to note that a p-value of exactly 0.0 is often a result of rounding errors or computational limitations. In practice, it means that the p-value is very small, but not exactly zero. Nonetheless, when the p-value is extremely small (approaching zero), it provides strong evidence against the null hypothesis, leading to its rejection.
 
 ## Framing a Prediction Model
+
+### Prediction Problem: Predict the Number of Minutes Required to Prepare a Recipe
 
 This prediction problem is relevant and valuable as it could assist individuals in planning their cooking schedules more effectively. Predicting the preparation time of a recipe can help users allocate their time efficiently, especially when planning meals for specific occasions or when considering their daily schedules.
 
 By building a predictive model to estimate the preparation time based on various features such as ingredients, cooking methods, and recipe complexity, we can provide users with insights into how long they might need to spend in the kitchen for a particular dish. This prediction problem aligns well with the theme of exploring culinary creations and can contribute to enhancing the overall cooking experience for individuals.
 
-Here is an outline of the steps we plan on taking:
+Here is an outline:
 
-1. Data Cleaning: Handle missing values and remove duplicates.
+### Prediction Problem:
+The prediction problem involves predicting the number of minutes required to prepare a recipe.
 
-2.. Feature Engineering: Create numerical representations of text-based features and generate additional relevant features.
+### Type of Problem: Regression
 
-3. Model Selection: Choose regression algorithms suitable for continuous variables.
+### The response variable: Number of minutes required to prepare a recipe
+<u>Explanation</u> : The response variable corresponds to the prediction problem because it directly represents the target we want to predict. In this case, we aim to estimate the time it takes to prepare a recipe, which is a continuous numerical value, making it suitable for regression analysis.
 
-4. Model Training: Split the data, train the model, and optimize hyperparameters.
+### Evaluation Metric: Mean Squared Error (MSE)
+MSE was chosen as the evaluation metric because it measures the average squared difference between the predicted and actual values. It penalizes large errors more heavily than MAE, which might is more desirable considering the context of our problem. Additionally, MSE is commonly used in regression tasks and can be useful when there are outliers in the data.
 
-5. Model Evaluation: Assess model performance using metrics like MAE, MSE, or RMSE.
+### Accessibility of Features: 
 
-6. Fine-Tuning: Fine-tune hyperparameters and validate the model's robustness.
-
-7. Deployment and Monitoring: Deploy the model into production and monitor its performance.
+The features used in the report are accessible at the time of prediction.
+The features used in the report, such as number of ingredients, number of steps,calorie counts, rating etc. are typically available and known before starting the recipe preparation process. These features can be observed or inferred from the recipe itself, making them accessible for prediction at the time when a user decides to cook a particular dish. Therefore, they are suitable for building a predictive model to estimate the preparation time accurately.
 
 ## Baseline Model
 
-For the baseline model, we used a simple linear regression model, which was trained on two features: `calorie_count` and `n_steps`. These features were selected based on their potential correlation with the target variable, as both the calorie count and the number of steps in a recipe might influence the time required for preparation.
+For the baseline model, we used a simple linear regression model, which was trained on two features: `calorie_count` (continuous quantitative) and `n_steps` (discrete quantitative). These features were selected based on their potential correlation with the target variable, as both the calorie count and the number of steps in a recipe might influence the time required for preparation.
 
 After fitting the model to the training data, we evaluated its performance on the test data using the mean squared error (MSE) as the performance metric. The MSE quantifies the average squared difference between the predicted and actual values of the target variable.
 
 The baseline model serves as a starting point for our predictive task. Further iterations and improvements on the model can be made by incorporating additional features, experimenting with different algorithms, and tuning hyperparameters. Additionally, exploring more sophisticated techniques such as feature engineering and ensemble methods could potentially enhance the predictive performance of the model.
 
+The Mean Squared Error (MSE) obtained from the predictions is approximately 31,499,289.65. This metric represents the average squared difference between the actual and predicted values of the target variable (number of minutes required to prepare a recipe). 
+
+A high MSE suggests that the model's predictions deviate significantly from the actual values, indicating that the model may not be performing well in accurately estimating the preparation time of recipes. 
+
+Further analysis, including exploring different models, feature engineering, and hyperparameter tuning, may be necessary to improve the model's performance and reduce the MSE.
+
 ## Final Model
 
-In the final model iteration, We aimed to enhance the predictive performance of the model by incorporating additional features and tuning hyperparameters. Despite the model not demonstrating significant improvement in performance metrics compared to the baseline, the process involved several important steps:
+In the final model iteration, We aimed to enhance the predictive performance of the model by incorporating additional features and tuning hyperparameters. 
 
-Feature Engineering: We engineered two new features from the dataset, leveraging insights from the data to create potentially more informative predictors.
+Feature Engineering: We engineered two new features from the dataset- `n_ingredients` (discrete quantitative) and `average_rating`, leveraging insights from the data to create potentially more informative predictors. The reason we chose n_ingredients was because a more number of ingredients could possibly increase preparation time. The reason we chose average rating was because we thought dishes that are rated higher on average could take longer time for preparation. Adding both these features reduce bias and help us predict better.
 
-Hyperparameter Tuning: We performed hyperparameter tuning on the training dataset using techniques like GridSearchCV to search for the optimal combination of hyperparameters for the chosen model. This step aimed to fine-tune the model's parameters to improve its predictive capability.
+Model architecture: We used a `RandomForestRegressor` for its robustness and ability to handle complex data patterns.
 
-Model Training: The final model was trained on the training dataset, utilizing the entire dataset after the hyperparameter tuning process.
+Hyperparameter Tuning: We used `RandomizedSearchCV` with 20 iterations and 3-fold cross-validation to find the best hyperparameters (`n_estimators`, `max_depth`, `min_samples_split`, `min_samples_leaf`). RandomizedSearchCV explores the hyperparameter space by randomly sampling combinations of hyperparameter values, training models with each combination, and selecting the combination that yields the best performance according to the specified evaluation metric (in this case, MSE). This process helps in finding optimal hyperparameters for the RandomForestRegressor model.
 
-Evaluation: The performance of the final model was evaluated on the test dataset to obtain performance metrics. Although the model did not exhibit a significant improvement in performance compared to the baseline, the evaluation provided valuable insights into the model's predictive ability.
+Model Training: Trained the pipeline with the best parameters on the full training and predicted on the test set and calculate Mean Squared Error (MSE).
 
-Despite the model not showing a marked improvement in performance metrics, the iterative process of feature engineering, hyperparameter tuning, and model evaluation contributed to a deeper understanding of the data and the modeling process. These efforts underscore the importance of experimentation and refinement in the pursuit of building robust predictive models.
+### Results
+- **Best Hyperparameters**: Optimal parameters from RandomizedSearchCV.
+- **Mean Squared Error**: Performance metric on the test set.
+
+We can see that there is significant improvement from the baseline model.
+
+In conclusion,  The final model represents a substantial improvement over the baseline in both predictive accuracy and feature representation. By incorporating additional features such as 'n_ingredients' and 'average_rating' and leveraging feature engineering techniques, the final model captures more nuanced aspects of recipe complexity and quality, leading to more accurate predictions of preparation time. Furthermore, hyperparameter tuning using RandomizedSearchCV optimizes the model's performance by selecting the best combination of hyperparameters, resulting in a significantly lower mean squared error (MSE) compared to the baseline. Overall, the final model's enhanced feature representation, combined with optimized hyperparameters, contributes to its superior predictive performance and underscores the importance of feature engineering and hyperparameter tuning in building effective machine learning models for recipe preparation time prediction.
 
 ## Fairness Analysis
 
