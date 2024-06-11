@@ -305,34 +305,34 @@ In conclusion,  The final model represents a substantial improvement over the ba
 
 ## Fairness Analysis
 
-Groups chose:
+### Groups chosen:
 
 The two groups chosen for fairness evaluation are recipes categorized based on their calorie counts. One group comprises recipes with low calorie counts, defined as recipes with less than 400 calories, while the other group consists of recipes with high calorie counts, defined as recipes with 400 calories or more.
 
-Evaluation Metric:
+### Evaluation Metric:
 
 The evaluation metric used is the Mean Squared Error (MSE), which measures the average squared difference between the predicted and actual values of preparation time for recipes in each group.
 
-Test Statistic:
+### Test Statistic:
 
 The test statistic used is the difference in MSE between the two groups. It quantifies the disparity in predictive performance between recipes with low and high calorie counts.
 
-Null Hypothesis:
+### Null Hypothesis:
 
 The null hypothesis states that there is no difference in predictive performance between recipes with low and high calorie counts. In other words, the difference in MSE between the two groups is due to random variation.
 
-Alternative Hypothesis:
+### Alternative Hypothesis:
 
 The alternative hypothesis states that there is a significant difference in predictive performance between recipes with low and high calorie counts. The difference in MSE between the two groups is not due to random variation but is instead influenced by factors related to the calorie count.
 
-Significance Level:
+### Significance Level:
 
 The significance level chosen for this analysis is 0.05, indicating a 5% probability of rejecting the null hypothesis when it is true.
 
-p-value:
+### p-value:
 
 The calculated p-value is 0.013.
 
-Interpretation of Results:
+### Interpretation of Results:
 
 With a p-value of 0.013, which is less than the significance level of 0.05, there is sufficient evidence to reject the null hypothesis. This suggests that there is a statistically significant difference in predictive performance between recipes with low and high calorie counts. The observed difference in MSE of 156,327.06 indicates that the model's predictions are significantly more accurate for one group compared to the other. Further investigation is warranted to understand the factors contributing to this disparity and to address potential fairness concerns in the model's predictions based on calorie count.
