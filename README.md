@@ -142,6 +142,8 @@ Similarly, the histogram for high-calorie recipes visualizes the distribution of
 
 In our exploration of bivariate analysis, we delve into the interconnected relationships between different attributes of recipes and their nutritional content. Through scatter plots, we aim to uncover potential associations between variables such as user ratings, recipe complexity, and calorie counts. 
 
+#### Scatter Plot: Average Rating vs. Calorie Count:
+
 <iframe
   src="graphs/birating.html"
   width="800"
@@ -149,9 +151,10 @@ In our exploration of bivariate analysis, we delve into the interconnected relat
   frameborder="0"
 ></iframe>
 
-#### Scatter Plot: Average Rating vs. Calorie Count:
 
 This scatter plot visualizes the relationship between the average rating of recipes and their calorie count. Each point on the plot represents a single recipe, with the x-axis indicating the average rating it received from users, and the y-axis representing its calorie count. We can see that as the ratings increase, the scatter plots get higher indicating that there might be a correlation between the two.
+
+#### Scatter Plot: Number of Steps vs. Calorie Count:
 
 <iframe
   src="graphs/bisteps.html"
@@ -160,7 +163,6 @@ This scatter plot visualizes the relationship between the average rating of reci
   frameborder="0"
 ></iframe>
 
-#### Scatter Plot: Number of Steps vs. Calorie Count:
 
 This scatter plot shows the relationship between the number of steps in a recipe and its calorie count. Each point represents a recipe, with the number of steps on the x-axis and the calorie count on the y-axis. This visualization helps us identify any trends or correlations between these two variables. In the plot, we cannot see any obvious relationship between the two and any relation might be due to chance.
 
